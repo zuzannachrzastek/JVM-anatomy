@@ -17,5 +17,6 @@ java -cp ".;../lib/*" Transform Test
 ```
 
 To see if it works run:
-
-> java Test
+```sh
+java Test
+```
