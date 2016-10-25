@@ -51,36 +51,13 @@ public class Transform {
                     mesg = "Method to be called: " + calledMethodName + calledMethodSignature;
 
                     mgInsList.insert(handle, factory.createPrintln(mesg));
-
-//                    for(Method m1 : methods){
-//                        if(calledMethodName == m1.getName().toString() && m1.getReturnType() != Type.VOID){
-//                            System.out.println("Called method name: " + m1.getName().toString());
-//                            System.out.println("Called method signature: " + m1.getSignature().toString());
-//
-//
-//                            InstructionList il = new InstructionList();
-//                            il.append(new GETSTATIC(cpg.addFieldref("java.lang.System", "out", "Ljava/io/PrintStrem;")));
-//                            il.append(new PUSH(cpg, mesg));
-//                            il.append(new INVOKEVIRTUAL(cpg.addMethodref("java.io.PrintStrem", "println", "(Ljava/lang/String;)V")));
-//
-//                            System.out.println("il: " + il.toString());
-//                            System.out.println("handle: " + handle);
-//
-//                            mgInsList.insert(il);
-//                            mgInsList.update();
-//                            mg.update();
-//                            break;
-//                        }
-//                    }
                 }
             }
 
             mg.setMaxStack();
             modClass.replaceMethod(m, mg.getMethod());
         }
-//        modClass.update();
-//        clazz.setConstantPool(cpg.getFinalConstantPool());
-        
+
         String classFilePath = Repository.lookupClassFile(modClass.getClassName()).getPath();
         try {
             modClass.getJavaClass().dump(classFilePath);
