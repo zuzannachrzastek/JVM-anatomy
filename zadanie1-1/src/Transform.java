@@ -24,8 +24,14 @@ public class Transform {
         }
 
         ClassGen modClass = new ClassGen(clazz);
-        ConstantPoolGen cp = modClass.getConstantPool();
+        ConstantPoolGen cp = new ConstantPoolGen(clazz.getConstantPool());
+
         InstructionList il = new InstructionList();
+        il.append(new GETSTATIC(cp.addFieldref("java.lang.System", "out", "Ljava/io/PrintStrem;")));
+        il.append(new PUSH(cp, "Is it working??"));
+        il.append(new INVOKEVIRTUAL(cp.addMethodref("java.io.PrintStrem", "println", "(Ljava/lang/String;)V")));
+        il.append(new RETURN());
+
         InstructionFactory factory = new InstructionFactory(modClass, cp);
 
         /*
@@ -34,29 +40,8 @@ public class Transform {
          * e.g. Method to be called: someMethod(Ljava/lang/String;)Ljava/lang/String;
          */
 
-        MethodGen methodGen;
-
-        methodGen = transform.createStatementMethod(il, cp, className, factory);
-
-        modClass.addMethod(methodGen.getMethod());
-        modClass.update();
-
-//        InvokeInstruction callStatement = factory.createInvoke(className,
-//                "statement",
-//                Type.VOID,
-//                new Type[]{new ArrayType(Type.STRING, 1)},
-//                Constants.INVOKEVIRTUAL);
-
-//        try {
-//            JavaClass newClass = modClass.getJavaClass();
-//            String className2 = className.replace(".", "/");
-//            newClass.dump(className2 + ".class");
-//            System.out.println("Class " + className + " modified\n");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         for(Method m : clazz.getMethods()){
+            MethodGen mg = new MethodGen(m, m.getName(), cp);
             if(m.getReturnType().toString() != "void"){
                 System.out.println("Method's name: " + m.getName().toString());
                 System.out.println("Type of method: " + m.getReturnType().toString());
@@ -71,15 +56,15 @@ public class Transform {
                     System.out.println("no arguments");
                 }
                 Instruction fieldInstruction = null;
-                MethodGen mg = new MethodGen(m, clazz.getClassName(), cp);
-                InstructionList instructionList  = mg.getInstructionList();
-                InstructionHandle[] ihs = instructionList.getInstructionHandles();
+
+                InstructionList mgInsList = mg.getInstructionList();
+                InstructionHandle[] ihs = mgInsList.getInstructionHandles();
 
                 for(int f = 0; f < ihs.length; f++){
-                    if(ihs[f].getInstruction() instanceof INVOKESTATIC
-                            || ihs[f].getInstruction() instanceof  LDC
-                            || ihs[f].getInstruction() instanceof INVOKEVIRTUAL
-                            || ihs[f].getInstruction() instanceof INVOKEINTERFACE){
+
+                    System.out.println("ins. " + f + ": " + ihs[f].getInstruction().toString());
+
+                    if(ihs[f].getInstruction() instanceof INVOKESTATIC){
                         fieldInstruction = ihs[f].getInstruction();
 //                        instructionList.insert(fieldInstruction, callStatement);
                         System.out.println("Found the invoke " + fieldInstruction.toString() + "\n");
@@ -88,27 +73,6 @@ public class Transform {
             }
         }
 
-    }
-
-    private MethodGen createStatementMethod(InstructionList il, ConstantPoolGen cp, String className, InstructionFactory factory){
-        il.append(new GETSTATIC(cp.addFieldref("java.lang.System", "out", "Ljava/io/PrintStrem;")));
-        il.append(new PUSH(cp, "Is it working??"));
-        il.append(new INVOKEVIRTUAL(cp.addMethodref("java.io.PrintStrem", "println", "(Ljava/lang/String;)V")));
-        il.append(new RETURN());
-
-        MethodGen methodGen = new MethodGen(
-                Constants.ACC_PUBLIC | Constants.ACC_STATIC,
-                Type.VOID,
-                new Type[]{new ArrayType(Type.STRING, 1)},
-                null,
-                "statement",
-                className,
-                il,
-                cp);
-
-        methodGen.setMaxLocals();
-        methodGen.setMaxStack();
-
-        return methodGen;
+        modClass.update();
     }
 }
