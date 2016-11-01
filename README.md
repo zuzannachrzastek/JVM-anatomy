@@ -7,8 +7,10 @@
 
 ###Running
 
-To run each of the programs go to their root directory,
-then to directory classes and run test.sh file.
+Go to classes directory and run file
+```sh
+test.sh
+```
 
 To see if it works run:
 ```sh
