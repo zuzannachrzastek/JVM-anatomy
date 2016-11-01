@@ -7,14 +7,8 @@
 
 ###Running
 
-To run each of the programs go to their root directory and run:
-
-```sh
-ant compile
-cd classes
-javac Test.java
-java -cp ".;../lib/*" Transform Test
-```
+To run each of the programs go to their root directory,
+then to directory classes and run test.sh file.
 
 To see if it works run:
 ```sh
