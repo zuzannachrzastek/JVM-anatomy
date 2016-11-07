@@ -4,10 +4,9 @@ STRING_CONSTANT:    [a-zA-Z][a-zA-Z0-9]*;
 
 INTEGER_CONSTANT:   '0' | [1-9][0-9]* ;
 
-program: statement+;
+program: statement*;
 
-statement:  /* epsilon */
-         |  vardeclaration';'
+statement:  vardeclaration';'
          |  assignment';'
          |  'Print' '"' STRING_CONSTANT '"'';'
          |  'Print' STRING_CONSTANT';'
