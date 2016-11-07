@@ -1,7 +1,4 @@
 // Generated from NPJ.g4 by ANTLR 4.5.3
-
-package antlr;
-
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -20,21 +17,25 @@ public class NPJParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, STRING_CONSTANT=11, INTEGER_CONSTANT=12, COMMENT=13, WS=14;
+		STRING_CONSTANT=10, INTEGER_CONSTANT=11, NULL=12, COMMENT=13, WS=14;
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_vardeclaration = 2, RULE_assignment = 3, 
-		RULE_lvalue = 4, RULE_rvalue = 5;
+		RULE_lvalue = 4, RULE_rvalue = 5, RULE_printStringMessage = 6, RULE_printStringConstant = 7, 
+		RULE_heapanalyze = 8, RULE_collect = 9, RULE_vardeclarationT = 10, RULE_vardeclarationSConst = 11, 
+		RULE_vardeclarationSNull = 12;
 	public static final String[] ruleNames = {
-		"program", "statement", "vardeclaration", "assignment", "lvalue", "rvalue"
+		"program", "statement", "vardeclaration", "assignment", "lvalue", "rvalue", 
+		"printStringMessage", "printStringConstant", "heapanalyze", "collect", 
+		"vardeclarationT", "vardeclarationSConst", "vardeclarationSNull"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "';'", "'Print'", "'\"'", "'HeapAnalyze'", "'Collect'", "'VarDeclT'", 
-		"'VarDeclS'", "'NULL'", "'='", "'.'"
+		null, "';'", "'='", "'.'", "'\"'", "'Print'", "'HeapAnalyze'", "'Collect'", 
+		"'VarDeclT'", "'VarDeclS'", null, null, "'NULL'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, null, null, null, null, "STRING_CONSTANT", 
-		"INTEGER_CONSTANT", "COMMENT", "WS"
+		null, null, null, null, null, null, null, null, null, null, "STRING_CONSTANT", 
+		"INTEGER_CONSTANT", "NULL", "COMMENT", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -113,17 +114,17 @@ public class NPJParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(15);
+			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << STRING_CONSTANT))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << STRING_CONSTANT))) != 0)) {
 				{
 				{
-				setState(12);
+				setState(26);
 				statement();
 				}
 				}
-				setState(17);
+				setState(31);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -147,7 +148,18 @@ public class NPJParser extends Parser {
 		public AssignmentContext assignment() {
 			return getRuleContext(AssignmentContext.class,0);
 		}
-		public TerminalNode STRING_CONSTANT() { return getToken(NPJParser.STRING_CONSTANT, 0); }
+		public PrintStringMessageContext printStringMessage() {
+			return getRuleContext(PrintStringMessageContext.class,0);
+		}
+		public PrintStringConstantContext printStringConstant() {
+			return getRuleContext(PrintStringConstantContext.class,0);
+		}
+		public HeapanalyzeContext heapanalyze() {
+			return getRuleContext(HeapanalyzeContext.class,0);
+		}
+		public CollectContext collect() {
+			return getRuleContext(CollectContext.class,0);
+		}
 		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -166,68 +178,60 @@ public class NPJParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_statement);
 		try {
-			setState(36);
+			setState(50);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(18);
+				setState(32);
 				vardeclaration();
-				setState(19);
+				setState(33);
 				match(T__0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(21);
+				setState(35);
 				assignment();
-				setState(22);
+				setState(36);
 				match(T__0);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(24);
-				match(T__1);
-				setState(25);
-				match(T__2);
-				setState(26);
-				match(STRING_CONSTANT);
-				setState(27);
-				match(T__2);
-				setState(28);
+				setState(38);
+				printStringMessage();
+				setState(39);
 				match(T__0);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(29);
-				match(T__1);
-				setState(30);
-				match(STRING_CONSTANT);
-				setState(31);
+				setState(41);
+				printStringConstant();
+				setState(42);
 				match(T__0);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(32);
-				match(T__3);
-				setState(33);
+				setState(44);
+				heapanalyze();
+				setState(45);
 				match(T__0);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(34);
-				match(T__4);
-				setState(35);
+				setState(47);
+				collect();
+				setState(48);
 				match(T__0);
 				}
 				break;
@@ -245,9 +249,14 @@ public class NPJParser extends Parser {
 	}
 
 	public static class VardeclarationContext extends ParserRuleContext {
-		public List<TerminalNode> STRING_CONSTANT() { return getTokens(NPJParser.STRING_CONSTANT); }
-		public TerminalNode STRING_CONSTANT(int i) {
-			return getToken(NPJParser.STRING_CONSTANT, i);
+		public VardeclarationTContext vardeclarationT() {
+			return getRuleContext(VardeclarationTContext.class,0);
+		}
+		public VardeclarationSConstContext vardeclarationSConst() {
+			return getRuleContext(VardeclarationSConstContext.class,0);
+		}
+		public VardeclarationSNullContext vardeclarationSNull() {
+			return getRuleContext(VardeclarationSNullContext.class,0);
 		}
 		public VardeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -267,42 +276,28 @@ public class NPJParser extends Parser {
 		VardeclarationContext _localctx = new VardeclarationContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_vardeclaration);
 		try {
-			setState(48);
+			setState(55);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(38);
-				match(T__5);
-				setState(39);
-				match(STRING_CONSTANT);
+				setState(52);
+				vardeclarationT();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(40);
-				match(T__6);
-				setState(41);
-				match(STRING_CONSTANT);
-				setState(42);
-				match(T__2);
-				setState(43);
-				match(STRING_CONSTANT);
-				setState(44);
-				match(T__2);
+				setState(53);
+				vardeclarationSConst();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(45);
-				match(T__6);
-				setState(46);
-				match(STRING_CONSTANT);
-				setState(47);
-				match(T__7);
+				setState(54);
+				vardeclarationSNull();
 				}
 				break;
 			}
@@ -345,11 +340,11 @@ public class NPJParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
+			setState(57);
 			lvalue(0);
-			setState(51);
-			match(T__8);
-			setState(52);
+			setState(58);
+			match(T__1);
+			setState(59);
 			rvalue();
 			}
 		}
@@ -399,11 +394,11 @@ public class NPJParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(55);
+			setState(62);
 			match(STRING_CONSTANT);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(62);
+			setState(69);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -414,16 +409,16 @@ public class NPJParser extends Parser {
 					{
 					_localctx = new LvalueContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_lvalue);
-					setState(57);
+					setState(64);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(58);
-					match(T__9);
-					setState(59);
+					setState(65);
+					match(T__2);
+					setState(66);
 					match(STRING_CONSTANT);
 					}
 					} 
 				}
-				setState(64);
+				setState(71);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			}
@@ -444,6 +439,7 @@ public class NPJParser extends Parser {
 		public LvalueContext lvalue() {
 			return getRuleContext(LvalueContext.class,0);
 		}
+		public TerminalNode NULL() { return getToken(NPJParser.NULL, 0); }
 		public TerminalNode INTEGER_CONSTANT() { return getToken(NPJParser.INTEGER_CONSTANT, 0); }
 		public TerminalNode STRING_CONSTANT() { return getToken(NPJParser.STRING_CONSTANT, 0); }
 		public RvalueContext(ParserRuleContext parent, int invokingState) {
@@ -464,42 +460,325 @@ public class NPJParser extends Parser {
 		RvalueContext _localctx = new RvalueContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_rvalue);
 		try {
-			setState(71);
+			setState(78);
 			switch (_input.LA(1)) {
 			case STRING_CONSTANT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(65);
+				setState(72);
 				lvalue(0);
 				}
 				break;
-			case T__7:
+			case NULL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(66);
-				match(T__7);
+				setState(73);
+				match(NULL);
 				}
 				break;
 			case INTEGER_CONSTANT:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(67);
+				setState(74);
 				match(INTEGER_CONSTANT);
 				}
 				break;
-			case T__2:
+			case T__3:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(68);
-				match(T__2);
-				setState(69);
+				setState(75);
+				match(T__3);
+				setState(76);
 				match(STRING_CONSTANT);
-				setState(70);
-				match(T__2);
+				setState(77);
+				match(T__3);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class PrintStringMessageContext extends ParserRuleContext {
+		public TerminalNode STRING_CONSTANT() { return getToken(NPJParser.STRING_CONSTANT, 0); }
+		public PrintStringMessageContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_printStringMessage; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterPrintStringMessage(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitPrintStringMessage(this);
+		}
+	}
+
+	public final PrintStringMessageContext printStringMessage() throws RecognitionException {
+		PrintStringMessageContext _localctx = new PrintStringMessageContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_printStringMessage);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(80);
+			match(T__4);
+			setState(81);
+			match(T__3);
+			setState(82);
+			match(STRING_CONSTANT);
+			setState(83);
+			match(T__3);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class PrintStringConstantContext extends ParserRuleContext {
+		public TerminalNode STRING_CONSTANT() { return getToken(NPJParser.STRING_CONSTANT, 0); }
+		public PrintStringConstantContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_printStringConstant; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterPrintStringConstant(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitPrintStringConstant(this);
+		}
+	}
+
+	public final PrintStringConstantContext printStringConstant() throws RecognitionException {
+		PrintStringConstantContext _localctx = new PrintStringConstantContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_printStringConstant);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(85);
+			match(T__4);
+			setState(86);
+			match(STRING_CONSTANT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class HeapanalyzeContext extends ParserRuleContext {
+		public HeapanalyzeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_heapanalyze; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterHeapanalyze(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitHeapanalyze(this);
+		}
+	}
+
+	public final HeapanalyzeContext heapanalyze() throws RecognitionException {
+		HeapanalyzeContext _localctx = new HeapanalyzeContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_heapanalyze);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(88);
+			match(T__5);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class CollectContext extends ParserRuleContext {
+		public CollectContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_collect; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterCollect(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitCollect(this);
+		}
+	}
+
+	public final CollectContext collect() throws RecognitionException {
+		CollectContext _localctx = new CollectContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_collect);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(90);
+			match(T__6);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class VardeclarationTContext extends ParserRuleContext {
+		public TerminalNode STRING_CONSTANT() { return getToken(NPJParser.STRING_CONSTANT, 0); }
+		public VardeclarationTContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_vardeclarationT; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterVardeclarationT(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitVardeclarationT(this);
+		}
+	}
+
+	public final VardeclarationTContext vardeclarationT() throws RecognitionException {
+		VardeclarationTContext _localctx = new VardeclarationTContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_vardeclarationT);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(92);
+			match(T__7);
+			setState(93);
+			match(STRING_CONSTANT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class VardeclarationSConstContext extends ParserRuleContext {
+		public List<TerminalNode> STRING_CONSTANT() { return getTokens(NPJParser.STRING_CONSTANT); }
+		public TerminalNode STRING_CONSTANT(int i) {
+			return getToken(NPJParser.STRING_CONSTANT, i);
+		}
+		public VardeclarationSConstContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_vardeclarationSConst; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterVardeclarationSConst(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitVardeclarationSConst(this);
+		}
+	}
+
+	public final VardeclarationSConstContext vardeclarationSConst() throws RecognitionException {
+		VardeclarationSConstContext _localctx = new VardeclarationSConstContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_vardeclarationSConst);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(95);
+			match(T__8);
+			setState(96);
+			match(STRING_CONSTANT);
+			setState(97);
+			match(T__3);
+			setState(98);
+			match(STRING_CONSTANT);
+			setState(99);
+			match(T__3);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class VardeclarationSNullContext extends ParserRuleContext {
+		public TerminalNode STRING_CONSTANT() { return getToken(NPJParser.STRING_CONSTANT, 0); }
+		public TerminalNode NULL() { return getToken(NPJParser.NULL, 0); }
+		public VardeclarationSNullContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_vardeclarationSNull; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).enterVardeclarationSNull(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof NPJListener ) ((NPJListener)listener).exitVardeclarationSNull(this);
+		}
+	}
+
+	public final VardeclarationSNullContext vardeclarationSNull() throws RecognitionException {
+		VardeclarationSNullContext _localctx = new VardeclarationSNullContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_vardeclarationSNull);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(101);
+			match(T__8);
+			setState(102);
+			match(STRING_CONSTANT);
+			setState(103);
+			match(NULL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -529,26 +808,31 @@ public class NPJParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20L\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\7\2\20\n\2\f\2\16\2\23\13\2\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5"+
-		"\3\'\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\63\n\4\3\5\3\5\3"+
-		"\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\7\6?\n\6\f\6\16\6B\13\6\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\5\7J\n\7\3\7\2\3\n\b\2\4\6\b\n\f\2\2Q\2\21\3\2\2\2\4&\3\2\2\2"+
-		"\6\62\3\2\2\2\b\64\3\2\2\2\n8\3\2\2\2\fI\3\2\2\2\16\20\5\4\3\2\17\16\3"+
-		"\2\2\2\20\23\3\2\2\2\21\17\3\2\2\2\21\22\3\2\2\2\22\3\3\2\2\2\23\21\3"+
-		"\2\2\2\24\25\5\6\4\2\25\26\7\3\2\2\26\'\3\2\2\2\27\30\5\b\5\2\30\31\7"+
-		"\3\2\2\31\'\3\2\2\2\32\33\7\4\2\2\33\34\7\5\2\2\34\35\7\r\2\2\35\36\7"+
-		"\5\2\2\36\'\7\3\2\2\37 \7\4\2\2 !\7\r\2\2!\'\7\3\2\2\"#\7\6\2\2#\'\7\3"+
-		"\2\2$%\7\7\2\2%\'\7\3\2\2&\24\3\2\2\2&\27\3\2\2\2&\32\3\2\2\2&\37\3\2"+
-		"\2\2&\"\3\2\2\2&$\3\2\2\2\'\5\3\2\2\2()\7\b\2\2)\63\7\r\2\2*+\7\t\2\2"+
-		"+,\7\r\2\2,-\7\5\2\2-.\7\r\2\2.\63\7\5\2\2/\60\7\t\2\2\60\61\7\r\2\2\61"+
-		"\63\7\n\2\2\62(\3\2\2\2\62*\3\2\2\2\62/\3\2\2\2\63\7\3\2\2\2\64\65\5\n"+
-		"\6\2\65\66\7\13\2\2\66\67\5\f\7\2\67\t\3\2\2\289\b\6\1\29:\7\r\2\2:@\3"+
-		"\2\2\2;<\f\3\2\2<=\7\f\2\2=?\7\r\2\2>;\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A\3"+
-		"\2\2\2A\13\3\2\2\2B@\3\2\2\2CJ\5\n\6\2DJ\7\n\2\2EJ\7\16\2\2FG\7\5\2\2"+
-		"GH\7\r\2\2HJ\7\5\2\2IC\3\2\2\2ID\3\2\2\2IE\3\2\2\2IF\3\2\2\2J\r\3\2\2"+
-		"\2\7\21&\62@I";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20l\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
+		"\f\t\f\4\r\t\r\4\16\t\16\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\65\n\3\3"+
+		"\4\3\4\3\4\5\4:\n\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\7\6F\n\6\f"+
+		"\6\16\6I\13\6\3\7\3\7\3\7\3\7\3\7\3\7\5\7Q\n\7\3\b\3\b\3\b\3\b\3\b\3\t"+
+		"\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\16\3"+
+		"\16\3\16\3\16\3\16\2\3\n\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\2j\2\37"+
+		"\3\2\2\2\4\64\3\2\2\2\69\3\2\2\2\b;\3\2\2\2\n?\3\2\2\2\fP\3\2\2\2\16R"+
+		"\3\2\2\2\20W\3\2\2\2\22Z\3\2\2\2\24\\\3\2\2\2\26^\3\2\2\2\30a\3\2\2\2"+
+		"\32g\3\2\2\2\34\36\5\4\3\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37"+
+		" \3\2\2\2 \3\3\2\2\2!\37\3\2\2\2\"#\5\6\4\2#$\7\3\2\2$\65\3\2\2\2%&\5"+
+		"\b\5\2&\'\7\3\2\2\'\65\3\2\2\2()\5\16\b\2)*\7\3\2\2*\65\3\2\2\2+,\5\20"+
+		"\t\2,-\7\3\2\2-\65\3\2\2\2./\5\22\n\2/\60\7\3\2\2\60\65\3\2\2\2\61\62"+
+		"\5\24\13\2\62\63\7\3\2\2\63\65\3\2\2\2\64\"\3\2\2\2\64%\3\2\2\2\64(\3"+
+		"\2\2\2\64+\3\2\2\2\64.\3\2\2\2\64\61\3\2\2\2\65\5\3\2\2\2\66:\5\26\f\2"+
+		"\67:\5\30\r\28:\5\32\16\29\66\3\2\2\29\67\3\2\2\298\3\2\2\2:\7\3\2\2\2"+
+		";<\5\n\6\2<=\7\4\2\2=>\5\f\7\2>\t\3\2\2\2?@\b\6\1\2@A\7\f\2\2AG\3\2\2"+
+		"\2BC\f\3\2\2CD\7\5\2\2DF\7\f\2\2EB\3\2\2\2FI\3\2\2\2GE\3\2\2\2GH\3\2\2"+
+		"\2H\13\3\2\2\2IG\3\2\2\2JQ\5\n\6\2KQ\7\16\2\2LQ\7\r\2\2MN\7\6\2\2NO\7"+
+		"\f\2\2OQ\7\6\2\2PJ\3\2\2\2PK\3\2\2\2PL\3\2\2\2PM\3\2\2\2Q\r\3\2\2\2RS"+
+		"\7\7\2\2ST\7\6\2\2TU\7\f\2\2UV\7\6\2\2V\17\3\2\2\2WX\7\7\2\2XY\7\f\2\2"+
+		"Y\21\3\2\2\2Z[\7\b\2\2[\23\3\2\2\2\\]\7\t\2\2]\25\3\2\2\2^_\7\n\2\2_`"+
+		"\7\f\2\2`\27\3\2\2\2ab\7\13\2\2bc\7\f\2\2cd\7\6\2\2de\7\f\2\2ef\7\6\2"+
+		"\2f\31\3\2\2\2gh\7\13\2\2hi\7\f\2\2ij\7\16\2\2j\33\3\2\2\2\7\37\649GP";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
